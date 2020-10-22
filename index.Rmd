@@ -1,11 +1,11 @@
 ---
 title: "Your Project Title Here"
-author: "Your names here"
-date: "date"
+author: "Your Names Here"
+date: "Add a date"
 output:
   rmdformats::readthedown:
     thumbnails: false
-    highlight: none
+    highlight: NULL
 ---
 
 ```{r setup, include=FALSE}
@@ -27,7 +27,7 @@ You should test out updating your GitHub Pages website:
 - update "Your Project Title Here" to a new title in the YAML header
 - knit `index.Rmd` 
 - commit and push BOTH the `index.Rmd` and the `index.html` files
-- go to  "https://stat231-f20.github.io/your-repo-name" to see the published test document
+- go to https://stat231-f20.github.io/your-repo-name to see the published test document (this is publicly available!)
 
 ## Including code and plots
 
@@ -39,23 +39,18 @@ summary(cars)
 
 Let's clean up the format of that output:
 
-<center>
-
 ```{r pretty, echo=FALSE, warning=FALSE, message=FALSE}
 library(kableExtra)
 summary(cars) %>%
   kable(col.names = c("Speed", "Distance")
         , row.names = F) %>%
   kable_styling(bootstrap_options = "striped"
-                , full_width = F
-                , position = "float_right") %>%
+                , full_width = F) %>%
   row_spec(0, bold = T, underline = T) %>%
   column_spec(1:2, width = "1.5in") 
 ```
 
-</center>
-
-In a study from the 1920s, fifty cars were used to see how the speed of the car and the distance taken to stop were related.  Speeds ranged between 4 and 25 mph.  Distances taken to stop ranged between 2 and 120 feet, with the middle 50% falling between 26 and 56 feet.  
+In a study from the 1920s, fifty cars were used to see how the speed of the car and the distance taken to stop were related.  Speeds ranged between `r min(cars$speed)` and `r max(cars$speed)` mph.  Distances taken to stop ranged between `r min(cars$dist)` and `r max(cars$dist)` feet, with the middle 50% falling between `r as.numeric(quantile(cars$dist)[2])` and `r as.numeric(quantile(cars$dist)[4])` feet.  
 
 You can also embed plots as normal, for example:
 
@@ -72,10 +67,10 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Including links and images
 
-You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/) and images ![team logo](https://raw.githubusercontent.com/stat231-f20/Shiny-Red-Bull/master/images/sports1-5.png?token=AGMTX5SWY36S3BCPSDKZ2SC7SG4QE)
+You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/) and images ![team logo](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
 
 
-# You can even create tabs is you want! {.tabset .tabset-fade .tabset-pills}
+# You can even create tabs if you want! {.tabset .tabset-fade .tabset-pills}
 
 ## Bulleted list
 
