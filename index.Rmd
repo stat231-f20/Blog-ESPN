@@ -27,7 +27,7 @@ You should test out updating your GitHub Pages website:
 - update "Your Project Title Here" to a new title in the YAML header
 - knit `index.Rmd` 
 - commit and push BOTH the `index.Rmd` and the `index.html` files
-- go to https://stat231-f20.github.io/your-repo-name to see the published test document (this is publicly available!)
+- go to stat231-f20.github.io/blog-espn/ to see the published test document (this is publicly available!)
 
 ## Including code and plots
 
@@ -59,7 +59,7 @@ ggplot(data = cars, aes(x = speed, y = dist)) +
   geom_point() + 
   labs(x = "Speed of car (mph)"
        , y = "Distance taken to stop (ft)"
-       , title = "cars data (1920s)")
+       , title = "Cars Data (1920s)")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
@@ -67,7 +67,15 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Including links and images
 
-You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/) and images ![team logo](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
+You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/) and images inline with text ![amherst mammoths](https://www.amherst.edu/system/files/styles/original/private/media/Mammoth_Icon_PurpleRGB.png)
+
+or on a new line
+
+<center>
+
+![ESPN's team image](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
+
+</center>
 
 
 # You can even create tabs if you want! {.tabset .tabset-fade .tabset-pills}
