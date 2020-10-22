@@ -27,7 +27,7 @@ You should test out updating your GitHub Pages website:
 - update "Your Project Title Here" to a new title in the YAML header
 - knit `index.Rmd` 
 - commit and push BOTH the `index.Rmd` and the `index.html` files
-- go to stat231-f20.github.io/blog-espn/ to see the published test document (this is publicly available!)
+- go to <https://stat231-f20.github.io/Blog-ESPN/> to see the published test document (this is a publicly available website!)
 
 ## Including code and plots
 
