@@ -67,7 +67,9 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Including links and images
 
-You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/) and images inline with text ![amherst mammoths](https://www.amherst.edu/system/files/styles/original/private/media/Mammoth_Icon_PurpleRGB.png)
+You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/).
+
+You can include images inline with text ![amherst mammoths](https://www.amherst.edu/system/files/styles/original/private/media/Mammoth_Icon_PurpleRGB.png)
 
 or on a new line
 
