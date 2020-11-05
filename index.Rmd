@@ -1,5 +1,5 @@
 ---
-title: "Your Project Title Here"
+title: ""
 author: "Your Names Here"
 date: "Add a date"
 output:
@@ -98,4 +98,15 @@ You can make a numbered list like this
 1. First thing I want to say
 2. Second thing I want to say
 3. Third thing I want to say
+
+
+```{r}
+#read in CSV (MAC)
+
+plays <- read_csv("/Users/seandube/Desktop/FINAL PUG/nfl-big-data-bowl-2021/plays.csv")
+week1 <- read_csv("/Users/seandube/Desktop/FINAL PUG/nfl-big-data-bowl-2021/week1.csv")
+week2 <- read_csv("/Users/seandube/Desktop/FINAL PUG/nfl-big-data-bowl-2021/week2.csv")
+week3 <- read_csv("/Users/seandube/Desktop/FINAL PUG/nfl-big-data-bowl-2021/week3.csv")
+week4 <- read_csv("/Users/seandube/Desktop/FINAL PUG/nfl-big-data-bowl-2021/week4.csv")
+```
 
