@@ -106,7 +106,7 @@ You can make a numbered list like this
 #read in CSV (MAC)
 
 plays <- read_csv("DATA/nfl-big-data-bowl-2021/plays.csv")
-\
+
 #data wrangling
 
 #dataframe of relevant variables from plays
