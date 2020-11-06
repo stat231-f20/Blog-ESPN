@@ -11,6 +11,20 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 library(tidyverse)
+
+plays <- read_csv("DATA//nfl-big-data-bowl-2021/plays.csv")
+week1 <- read_csv("DATA//nfl-big-data-bowl-2021/week1.csv")
+week2 <- read_csv("DATA//nfl-big-data-bowl-2021/week2.csv")
+week3 <- read_csv("DATA//nfl-big-data-bowl-2021/week3.csv")
+
+
+
+count(week1, event)
+#wrangled dat 
+#join by gameID play Id
+
+
+
 ```
 
 # Header 1
@@ -105,7 +119,7 @@ You can make a numbered list like this
 #create data folder
 #read in CSV (MAC)
 
-plays <- read_csv("DATA/nfl-big-data-bowl-2021/plays.csv")
+
 
 #data wrangling
 
