@@ -6,6 +6,7 @@ output:
   rmdformats::readthedown:
     thumbnails: false
     highlight: NULL
+    runtime: shiny
 ---
 
 ```{r, echo=FALSE}
