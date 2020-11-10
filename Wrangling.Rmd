@@ -1,0 +1,115 @@
+---
+title: "Blog-Wrangling"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+library(tidyverse)
+
+#plays <- read_csv("C:/~git/Old-Blog-ESPN/DATA/plays.csv")
+#eek1 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week1.csv")
+#week2 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week2.csv")
+#week3 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week3.csv")
+#week4 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week4.csv")
+#week5 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week4.csv")
+#week6 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week6.csv")
+#week7 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week7.csv")
+#week8 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week8.csv")
+#week9 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week9.csv")
+#week10 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week10.csv")
+#week11 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week11.csv")
+#week12 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week12.csv")
+#week13 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week13.csv")
+#week14 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week14.csv")
+#week15 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week15.csv")
+#week16 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week16.csv")
+#week17 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week17.csv")
+
+
+
+
+#weeks <- combine(week1, week2, week3, week4, week5, week6, week7, week8, week9, week10, week11, week12, week13, week14, week15, week16, week17)
+#wrangle
+
+week1edit <- weeks %>%
+  filter(event != "None") %>%
+  select(x,y,event, nflId, displayName, position, team, gameId, playId, playDirection)%>%
+  group_by(gameId, playId) %>%
+  right_join(plays, week1edit, by = c("playId", "gameId")) %>%
+  filter(event != "NA")
+
+#filter the events needed
+plot <- week1edit %>%
+  filter(event == "ball_snap" | event == "pass_outcome_incomplete" | event == "tackle" | event == "out_of_bounds") %>%
+  filter(displayName == "Football")
+
+plot1other <- plot %>%
+  filter(event != "tackle")%>%
+  filter(event != "out_of_bounds")
+
+plot1endplay <- plot %>%
+  filter(event == "tackle" | event == "out_of_bounds")%>%
+  mutate(event = "end_of_play")
+
+plot1 <- combine(plot1other, plot1endplay)
+
+
+#categorizing the yards to go 
+plot1short <- plot1 %>%
+  filter(yardsToGo <= 3) %>%
+  mutate(togo = "short")
+
+plot1med <- plot1 %>%
+  filter(yardsToGo >= 3 & yardsToGo < 8) %>%
+  mutate(togo = "medium")
+
+plot1long <- plot1 %>%
+  filter(yardsToGo >= 8) %>%
+  mutate(togo = "long")
+
+plot1 <- combine(plot1short, plot1med, plot1long)
+
+
+#first down
+plot1final <- plot1 %>%
+  mutate(firstdownnum = playResult - yardsToGo)
+
+firstdown_y <- plot1final %>%
+  filter(firstdownnum >= 0)%>%
+  mutate(firstdown = 1)
+
+firstdown_n <- plot1final %>%
+  filter(firstdownnum < 0)%>%
+  mutate(firstdown = 0)
+
+plot1final <- combine(firstdown_n, firstdown_y)
+
+
+
+plot1finished <- plot1final %>%
+  select(gameId, playId, event, down, yardsToGo, playDirection, absoluteYardlineNumber, playResult, togo, x, y, firstdown)
+
+write_csv(plot1finished, "plot1finished.csv")
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
