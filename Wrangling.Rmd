@@ -81,7 +81,7 @@ week1edit <- weeks %>%
 
 #filter the events needed
 plot <- week1edit %>%
-  filter(event == "ball_snap" | event == "pass_outcome_incomplete" | event == "tackle" | event == "out_of_bounds") %>%
+  filter(event == "ball_snap" | event == "pass_outcome_incomplete" | event == "tackle" | event == "out_of_bounds" | event == "touchdown") %>%
   filter(displayName == "Football")
 
 plot1other <- plot %>%
