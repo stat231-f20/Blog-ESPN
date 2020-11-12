@@ -13,7 +13,9 @@ output:
 
 ## Our mission
 
-The ESPN pug group wants to explore the outcomes of passing plays in the NFL. We gathered data from the NFL Big Bowl Data
+The ESPN pug group wants to explore the outcomes of passing plays in the NFL. We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. Our variable of interest, outcome of play, has many results. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data to track where the ball was snapped, where the ball was at the end of a play, and to determine outcome of the play. 
+
+
 ```{r, echo=FALSE}
 library(shiny)
 library(ggplot2)
@@ -82,7 +84,6 @@ server <- function(input, output) {
 }
   
   
-
 
 
 
