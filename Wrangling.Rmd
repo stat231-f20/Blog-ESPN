@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 library(tidyverse)
 
 #plays <- read_csv("C:/~git/Old-Blog-ESPN/DATA/plays.csv")
-#eek1 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week1.csv")
+#week1 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week1.csv")
 #week2 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week2.csv")
 #week3 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week3.csv")
 #week4 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week4.csv")
@@ -41,7 +41,7 @@ week1edit <- weeks %>%
 
 #filter the events needed
 plot <- week1edit %>%
-  filter(event == "ball_snap" | event == "pass_outcome_incomplete" | event == "tackle" | event == "out_of_bounds") %>%
+  filter(event == "ball_snap" | event == "pass_outcome_incomplete" | event == "tackle" | event == "out_of_bounds" | event == "touchdown") %>%
   filter(displayName == "Football")
 
 plot1other <- plot %>%
