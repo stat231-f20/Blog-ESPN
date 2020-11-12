@@ -24,7 +24,7 @@ library(tidyverse)
 #week14 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week14.csv")
 #week15 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week15.csv")
 #week16 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week16.csv")
-#week17 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week17.csv")
+#week17 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week17.csv") 
 
 #plays <- read_csv("/Users/seandube/git/DATA/nfl-big-data-bowl-2021/plays.csv")
 #week1 <- read_csv("/Users/seandube/git/DATA/nfl-big-data-bowl-2021/week1.csv")
