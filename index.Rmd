@@ -8,22 +8,33 @@ output:
     highlight: NULL
     runtime: shiny
 ---
+<center>
 
-#  NFL: Outcomes of passing plays
+![ESPN - Damian Ruparal, Nathan Tatko, Sean Dube](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
 
-## Our mission
+</center>
+# ABOUT THE DATA
 
-The ESPN pug group wants to explore the outcomes of passing plays in the NFL. We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. Our variable of interest, outcome of play, has many results. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data to track where the ball was snapped, where the ball was at the end of a play, and to determine outcome of the play. 
+We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops).
 
 
-```{r, echo=FALSE}
+## OUR MISSION
+
+The ESPN pug group wants to explore the outcomes of passing plays in the NFL. Our variable of interest, outcome of play, has many results. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data to track where the ball was snapped, where the ball was at the end of a play, and to determine outcome of the play. 
+
+
+## THE APP
+
+```{r, echo=FALSE, include=FALSE}
 library(shiny)
 library(ggplot2)
 library(tidyverse)
 library(png)
 library(grid)
+```
 
 
+```{r, echo=FALSE}
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
 
@@ -93,17 +104,6 @@ shinyApp(ui = ui, server = server)
 
 ```
 
-### 
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For example, you can include **Bold** and _Italic_ and `Code` text.  For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-You should test out updating your GitHub Pages website:
-
-- clone your group's blog project repo in RStudio
-- update "Your Project Title Here" to a new title in the YAML header
-- knit `index.Rmd` 
-- commit and push BOTH the `index.Rmd` and the `index.html` files
-- go to <https://stat231-f20.github.io/Blog-ESPN/> to see the published test document (this is a publicly available website!)
 
 ## Including code and plots
 
@@ -129,30 +129,9 @@ You can include images inline with text ![amherst mammoths](https://www.amherst.
 
 or on a new line
 
-<center>
-
-![ESPN's team image](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
-
-</center>
 
 
-# You can even create tabs if you want! {.tabset .tabset-fade .tabset-pills}
-
-## Bulleted list
-
-You can make a bulleted list like this:
-
-- item 1
-- item 2
-- item 3
 
 
-## Numbered list
-
-You can make a numbered list like this
-
-1. First thing I want to say
-2. Second thing I want to say
-3. Third thing I want to say
 
 
