@@ -1,7 +1,7 @@
 ---
 title: "NFL Passing"
-author: "Your Names Here"
-date: "Add a date"
+author: "Damien Ruparal Nathan Tatko Sean Dube"
+date: "11/17/2020"
 output:
   rmdformats::readthedown:
     thumbnails: false
@@ -9,12 +9,18 @@ output:
     runtime: shiny
 ---
 
+#  NFL: Outcomes of passing plays
+
+## Our mission
+
+The ESPN pug group wants to explore the outcomes of passing plays in the NFL. We gathered data from the NFL Big Bowl Data
 ```{r, echo=FALSE}
 library(shiny)
 library(ggplot2)
 library(tidyverse)
 library(png)
 library(grid)
+
 
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
@@ -86,11 +92,7 @@ shinyApp(ui = ui, server = server)
 
 ```
 
-# Header 1
-
-## Header 2
-
-### Header 3
+### 
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For example, you can include **Bold** and _Italic_ and `Code` text.  For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
