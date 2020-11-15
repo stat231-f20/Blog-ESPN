@@ -10,20 +10,25 @@ output:
 ---
 <center>
 
-![ESPN - Damian Ruparal, Nathan Tatko, Sean Dube](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
+![ESPN - Damien Ruparel, Nathan Tatko, Sean Dube](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
 
 </center>
-# ABOUT THE DATA
 
-We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops).
+## Our Mission
 
+The ESPN PUG group wants to explore the outcomes of passing plays in the NFL 2018 season. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data visualize where the ball was started at the beginnning of the play and where and what happened at the end of the play. 
 
-## OUR MISSION
+## The Data
 
-The ESPN pug group wants to explore the outcomes of passing plays in the NFL. Our variable of interest, outcome of play, has many results. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data to track where the ball was snapped, where the ball was at the end of a play, and to determine outcome of the play. 
+We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops). The data collected includes various datasets: one dataset for plays in a game, and seventeen weeks of tracking data. 
 
+## What is so important about passing in the NFL?
 
-## THE APP
+Passing plays have become more common as teams can gain more yards compared to running plays. In 2018, all but one team had a passing play percentage above 50% (teamrankings.com). There were 1371 touchdowns scored and Quarterbacks threw more touchdown passes than ever before. Many people refer to the NFL as a passing league. As quarterbacks and wide receivers become more skilled we will continue to see an increase in the number of passing plays. 
+
+## The App
+
+To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. The app also includes a data table of the passing stats for each team in the NFL. The data table shows the count of completed passes (C), incomplete passes (I), and interceptions (IN), and the total yards gained throughout the season. Check it out! 
 
 ```{r, echo=FALSE, include=FALSE}
 library(shiny)
@@ -37,7 +42,7 @@ library(grid)
 ```{r, echo=FALSE}
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
-
+Percentages <- read.csv("percentages.csv")
 togo <- c("short", "medium", "long")
 
 direction1 <- c("left", "right")
@@ -60,12 +65,13 @@ ui <- fluidPage(
   mainPanel(
     tabsetPanel(
       tabPanel("Play Stats", plotOutput("Plot")
-      )
+      ),
+      tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table")
     )
   )
   
 )
-
+)
 
 
 
@@ -96,6 +102,9 @@ server <- function(input, output) {
                        labels=c("Line of Scrimmage", "Complete Pass", "Incomplete Pass", "Touchdown"))
     
   )
+  output$Table <- DT::renderDataTable({
+    DT::datatable(Percentages)
+  })
 }
   
   
@@ -108,31 +117,18 @@ shinyApp(ui = ui, server = server)
 
 ```
 
+## Our findings
 
-## Including code and plots
+## Limitations
 
-You can embed code as normal, for example:
-
-
-Let's clean up the format of that output:
+Although each NFL team in a season plays 16 games, we must take into account that each team varies in the amount of pass plays they call, and the skill level in their receiver core, which will have a major impact in their data. Teams that have a strong receiving core, and are a pass heavy team, may have much better passing stats than teams that lack in skilled receivers and focus on running the ball, despite playing the same amount of games. Furthermore, each game is different; though each game has 4, 15 minute quarters, the clock runs differently per game. A close, highly contested game can force teams to call more timeouts, find ways to get out of bounds to stop the clock, or may even go into overtime; all result in more passing plays to try and slow down the clock. A blowout may result in more running plays to keep the game clock running and to keep the game moving, so it ends relatively quicker. Other lurking variables include strength of schedule, injuries, and coaching tendencies. A more difficult strength of schedule may result in less passing yards and passing attempts completed, as the stronger opposing defenses can disrupt the flow of an offense. A coach that relies heavily on running plays and designs his offense around running the ball will certainly decrease the amount of pass attempts completed; this does not mean that the team is worse than a team with more passing yards. For example,  the Chicago Bears only had 3699 passing yards, whereas their rival, the Green Bay Packers, had 4602 yards. The Chicago Bears had an overall record of 12-4 (W-L-D), and the Green Bay Packers had an overall record of 6-9-1 (W-L-D), in 2018. Injuries may also have an impact on a team that focuses on passing the ball. If either the quarterback or a strong receiver gets injured, it may have an impact on the team's passing attempts. 
 
 
-In a study from the 1920s, fifty cars were used to see how the speed of the car and the distance taken to stop were related.  Speeds ranged between `r min(cars$speed)` and `r max(cars$speed)` mph.  Distances taken to stop ranged between `r min(cars$dist)` and `r max(cars$dist)` feet, with the middle 50% falling between `r as.numeric(quantile(cars$dist)[2])` and `r as.numeric(quantile(cars$dist)[4])` feet.  
+## Images
 
-You can also embed plots as normal, for example:
+![Odell Beckham Jr (WR)](https://ftw.usatoday.com/wp-content/uploads/sites/90/2014/11/ap_aptopix_cowboys_giants_football_68976850.jpg)
 
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
-## Including links and images
-
-You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/).
-
-You can include images inline with text ![amherst mammoths](https://www.amherst.edu/system/files/styles/original/private/media/Mammoth_Icon_PurpleRGB.png)
-
-or on a new line
-
+![Michael Thomas (WR)](https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/saints/t0g9bfyocxayqta7jhpn)
 
 
 

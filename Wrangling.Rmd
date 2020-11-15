@@ -69,7 +69,7 @@ library(tidyverse)
 
 
 
-#weeks <- combine(week1, week2, week3, week4, week5, week6, week7, week8, week9, week10, week11, week12, week13, week14, week15, week16, week17)
+weeks <- combine(week1, week2, week3, week4, week5, week6, week7, week8, week9, week10, week11, week12, week13, week14, week15, week16, week17)
 #wrangle
 
 week1edit <- weeks %>%
@@ -79,8 +79,16 @@ week1edit <- weeks %>%
   right_join(plays, week1edit, by = c("playId", "gameId")) %>%
   filter(event != "NA")
 
+percentages <- plays %>%
+  select(possessionTeam, yardsToGo, passResult, offensePlayResult) %>%
+  rename(Team = possessionTeam, Result = passResult, yardsGained = offensePlayResult) %>%
+  group_by(Team, Result) %>%
+  summarise(n=n(), TotalYards = sum(yardsGained)) %>%
+  rename(TotalPlay_Result = n) %>%
+  filter(Result != "NA" & Result != "R" & Result != "S") 
 
-
+  
+  
 
 #filter the events needed
 plot <- week1edit %>%
@@ -134,25 +142,7 @@ plot1finished <- plot1final %>%
   select(gameId, playId, event, down, yardsToGo, playDirection, absoluteYardlineNumber, playResult, togo, x, y, firstdown)
 
 write_csv(plot1finished, "plot1finished.csv")
+write_csv(percentages, "percentages.csv")
 
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
