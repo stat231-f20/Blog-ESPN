@@ -202,9 +202,12 @@ NFLteams <- c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN"
 
 NFL <- as.data.frame(NFLteams)
 
-NFL1 <- cbind(NFL18, Team=NFLteams)
+NFL1 <- cbind(NFL18, Team=NFLteams)%>%
+  select(-`NFL Team`)
 
-Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team")
+Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team") %>%
+  select(Team, W, L, `T`, AverageYards, Percentage)%>%
+  arrange(Team)
 
 
 write_csv(Teamstats, "Teamstats.csv")
