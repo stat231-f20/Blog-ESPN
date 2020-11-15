@@ -42,7 +42,7 @@ library(grid)
 ```{r, echo=FALSE}
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
-Percentages <- read.csv("percentages.csv")
+PassingStats <- read.csv("passstats.csv")
 togo <- c("short", "medium", "long")
 
 direction1 <- c("left", "right")
@@ -103,7 +103,7 @@ server <- function(input, output) {
     
   )
   output$Table <- DT::renderDataTable({
-    DT::datatable(Percentages)
+    DT::datatable(PassingStats)
   })
 }
   
