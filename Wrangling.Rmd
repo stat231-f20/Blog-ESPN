@@ -152,3 +152,33 @@ write_csv(PassStats, "PassStats.csv")
 write_csv(CompletionPercentage, "CompletionPercentage.csv")
 ```
 
+```{r}
+plot2touchdown <- plot1finished %>%
+  filter(event == "touchdown")%>%
+  mutate(touchdown = 1)%>%
+  select(gameId, playId, touchdown)
+
+plot2 <- plot2touchdown %>%
+   right_join(plot1finished, plot2touchdown, by = c("playId", "gameId")) %>%
+   mutate_all(funs(ifelse(is.na(.), 0, .)))
+
+plot2completion <- plot1finished %>%
+  filter(event == "touchdown" | event == "end_of_play")%>%
+  mutate(completion = 1)%>%
+  select(gameId, playId, completion)
+
+plot2 <- plot2completion %>%
+   right_join(plot2, plot2completion, by = c("playId", "gameId")) %>%
+   mutate_all(funs(ifelse(is.na(.), 0, .)))
+
+  
+plot2finished <- plot2 %>%
+  select(gameId, playId, down, togo, touchdown, completion, playResult, event, absoluteYardlineNumber, playDirection)%>%
+  filter(event == "ball_snap")
+
+plot2finished <- plot2finished %>%
+  group_by(down, togo, absoluteYardlineNumber, playDirection)%>%
+  summarise(TouchdownPercentage = mean(touchdown), CompletionPercentage = mean(completion), AverageYards = mean(playResult))
+
+write_csv(plot2finished, "plot2finished.csv")
+```
