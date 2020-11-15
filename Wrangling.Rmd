@@ -178,7 +178,10 @@ plot2finished <- plot2 %>%
 
 plot2finished <- plot2finished %>%
   group_by(down, togo, absoluteYardlineNumber, playDirection)%>%
-  summarise(TouchdownPercentage = mean(touchdown), CompletionPercentage = mean(completion), AverageYards = mean(playResult))
+  summarise(TouchdownPercentage = mean(touchdown), CompletionPercentage = mean(completion), AverageYards = mean(playResult))%>%
+  mutate(TouchdownPercentage = round(TouchdownPercentage,2))%>%
+  mutate(CompletionPercentage = round(CompletionPercentage,2))%>%
+  mutate(AverageYards = round(AverageYards,2))
 
 write_csv(plot2finished, "plot2finished.csv")
 ```
