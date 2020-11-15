@@ -12,6 +12,10 @@ PassingStats <- read.csv("PassStats.csv")
 CompletionPercentage <- read.csv("CompletionPercentage.csv")
 togo <- c("short", "medium", "long")
 
+
+NFLteams <- c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI",
+              "PIT", "TEN", "BAL", "DAL", "IND", "SEA", "HOU", "NE", "CHI", "KC", "LAC", "LA", "NO")
+
 direction1 <- c("left", "right")
 
 ui <- fluidPage(
