@@ -85,8 +85,7 @@ percentages <- plays %>%
   group_by(Team, Result) %>%
   summarise(n=n(), TotalYards = sum(yardsGained)) %>%
   rename(TotalPlay_Type = n) %>%
-  filter(Result != "NA") %>%
-  
+  filter(Result != "NA" & Result != "R" & Result != "S") 
 
   
   
