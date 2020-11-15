@@ -65,12 +65,13 @@ ui <- fluidPage(
   mainPanel(
     tabsetPanel(
       tabPanel("Play Stats", plotOutput("Plot")
-      )
+      ),
+      tabPanel("Passing Statistics (2018 NFL SEASON)", DT::dataTableOutput("Table")
     )
   )
   
 )
-
+)
 
 
 
@@ -97,6 +98,9 @@ server <- function(input, output) {
       ylim(-5,60)
     
   )
+  output$Table <- DT::renderDataTable({
+    DT::datatable(percentages)
+  })
 }
   
   
@@ -116,7 +120,7 @@ shinyApp(ui = ui, server = server)
 Although each NFL team in a season plays 16 games, we must take into account that each team varies in the amount of pass plays they call, and the skill level in their receiver core, which will have a major impact in their data. Teams that have a strong receiving core, and are a pass heavy team, may have much better passing stats than teams that lack in skilled receivers and focus on running the ball, despite playing the same amount of games. Furthermore, each game is different; though each game has 4, 15 minute quarters, the clock runs differently per game. A close, highly contested game can force teams to call more timeouts, find ways to get out of bounds to stop the clock, or may even go into overtime; all result in more passing plays to try and slow down the clock. A blowout may result in more running plays to keep the game clock running and to keep the game moving, so it ends relatively quicker. Other lurking variables include strength of schedule, injuries, and coaching tendencies. A more difficult strength of schedule may result in less passing yards and passing attempts completed, as the stronger opposing defenses can disrupt the flow of an offense. A coach that relies heavily on running plays and designs his offense around running the ball will certainly decrease the amount of pass attempts completed; this does not mean that the team is worse than a team with more passing yards. For example,  the Chicago Bears only had 3699 passing yards, whereas their rival, the Green Bay Packers, had 4602 yards. The Chicago Bears had an overall record of 12-4, and the Green Bay Packers had an overall record of 6-9-1, in 2018. Injuries may also have an impact on a team that focuses on passing the ball. If either the quarterback or a strong receiver gets injured, it may have an impact on the team's passing attempts. 
 
 
-## Including links and images
+## Images
 
 ![Odell Beckham Jr (WR)](https://ftw.usatoday.com/wp-content/uploads/sites/90/2014/11/ap_aptopix_cowboys_giants_football_68976850.jpg)
 
