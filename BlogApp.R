@@ -5,6 +5,7 @@ library(png)
 library(grid)
 
 plot1 <- read.csv("plot1finished.csv")
+plot2 <- read.csv("plot2finished.csv")
 footballfield <- png::readPNG("footballfield.png")
 
 PassingStats <- read.csv("PassStats.csv")
@@ -30,7 +31,9 @@ ui <- fluidPage(
   ),
   mainPanel(
     tabsetPanel(
-      tabPanel("Play Stats", plotOutput("Plot")
+      tabPanel("Plot of Passing Play Outcomes", plotOutput("Plot")
+      ),
+      tabPanel("Table of Passing Play Outcomes",  DT::dataTableOutput("Table_plot")
       ),
       tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table")
     ),
@@ -52,6 +55,13 @@ server <- function(input, output) {
       filter(playDirection == input$direction)
   })
   
+  use_data2 <- reactive({
+    data <- plot2 %>%
+      filter(down == input$down1)%>%
+      filter(togo == input$ToGo) %>%
+      filter(absoluteYardlineNumber == input$yardline)%>%
+      filter(playDirection == input$direction)
+  })
   
   output$Plot <- renderPlot(
     
@@ -62,9 +72,15 @@ server <- function(input, output) {
                         -Inf, Inf, -Inf, Inf) + 
       geom_point(size = 3)+
       xlim(0,120)+
-      ylim(-5,60)
+      ylim(-5,60)+
+      scale_color_manual(values=c('orange','yellow', 'red', 'blue'))+
+      scale_shape_manual(values=c(15, 16, 17, 18))
     
   )
+  
+  output$Table_plot <- DT::renderDataTable({
+    DT::datatable(use_data2())
+  })
 
     output$Table <- DT::renderDataTable({
       DT::datatable(PassingStats)
