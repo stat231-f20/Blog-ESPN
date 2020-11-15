@@ -13,17 +13,22 @@ output:
 ![ESPN - Damian Ruparal, Nathan Tatko, Sean Dube](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
 
 </center>
-# ABOUT THE DATA
 
-We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops).
+## Our Mission
 
+The ESPN PUG group wants to explore the outcomes of passing plays in the NFL 2018 season. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data visualize where the ball was started at the beginnning of the play and where and what happened at the end of the play. 
 
-## OUR MISSION
+## The Data
 
-The ESPN pug group wants to explore the outcomes of passing plays in the NFL. Our variable of interest, outcome of play, has many results. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data to track where the ball was snapped, where the ball was at the end of a play, and to determine outcome of the play. 
+We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops). The data collected includes various datasets: one dataset for plays in a game, and seventeen weeks of tracking data. 
 
+## What is so important about passing in the NFL?
 
-## THE APP
+Passing plays have become more common as teams can gain more yards compared to running plays. In 2018, all but one team had a passing play percentage above 50% (teamrankings.com). There were 1371 touchdowns scored and Quarterbacks threw more touchdown passes than ever before. Many people refer to the NFL as a passing league. As quarterbacks and wide receivers become more skilled we will continue to see an increase in the number of passing plays. 
+
+## The App
+
+To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a cholorpleth of a football field. Events of the game are marked with different symbols. Check it out! 
 
 ```{r, echo=FALSE, include=FALSE}
 library(shiny)
@@ -104,31 +109,20 @@ shinyApp(ui = ui, server = server)
 
 ```
 
+## Our findings
 
-## Including code and plots
-
-You can embed code as normal, for example:
-
-
-Let's clean up the format of that output:
+## Limitations
 
 
-In a study from the 1920s, fifty cars were used to see how the speed of the car and the distance taken to stop were related.  Speeds ranged between `r min(cars$speed)` and `r max(cars$speed)` mph.  Distances taken to stop ranged between `r min(cars$dist)` and `r max(cars$dist)` feet, with the middle 50% falling between `r as.numeric(quantile(cars$dist)[2])` and `r as.numeric(quantile(cars$dist)[4])` feet.  
-
-You can also embed plots as normal, for example:
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 
 ## Including links and images
 
-You can include [Links](https://www.datadreaming.org/post/r-markdown-theme-gallery/).
+You can include [Tom Brady Passing](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bostonglobe.com%2F2020%2F03%2F20%2Fsports%2Ftom-brady-announces-hes-joining-tampa-bay-buccaneers%2F&psig=AOvVaw2isj5Eahm10bpoTa_oejsz&ust=1605354894207000&source=images&cd=vfe&ved=2ahUKEwiPlveSu__sAhX7ZBUIHaxbA7oQjRx6BAgAEAc)
 
 You can include images inline with text ![amherst mammoths](https://www.amherst.edu/system/files/styles/original/private/media/Mammoth_Icon_PurpleRGB.png)
 
 or on a new line
-
 
 
 
