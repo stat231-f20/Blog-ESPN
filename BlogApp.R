@@ -70,7 +70,7 @@ server <- function(input, output) {
                                    width = unit(1,"npc"), 
                                    height = unit(1,"npc")), 
                         -Inf, Inf, -Inf, Inf) + 
-      geom_point(size = 3)+
+      geom_point(size = 5)+
       xlim(0,120)+
       ylim(-5,60)+
       scale_color_manual(values=c('orange','yellow', 'red', 'blue'))+

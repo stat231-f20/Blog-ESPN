@@ -7,6 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 library(tidyverse)
 library(dplyr)
+library(rvest)
 #plays <- read_csv("C:/~git/Old-Blog-ESPN/DATA/plays.csv")
 #week1 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week1.csv")
 #week2 <- read_csv("C:/~git/Old-Blog-ESPN/DATA/week2.csv")
@@ -184,4 +185,18 @@ plot2finished <- plot2finished %>%
   mutate(AverageYards = round(AverageYards,2))
 
 write_csv(plot2finished, "plot2finished.csv")
+```
+
+
+
+```{r}
+url_NFL18 <- "https://www.nfl.com/standings/league/2018/reg/"
+tables_NFL18 <- url_NFL18 %>%read_html()%>%html_nodes("table")
+length(tables_NFL18)
+NFL18 <- html_table(tables_NFL18[[1]])
+NFL18 <- NFL18 %>%
+  select(`NFL Team`, W, L, `T`)
+
+
+
 ```
