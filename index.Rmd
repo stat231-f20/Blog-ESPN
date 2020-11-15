@@ -42,7 +42,7 @@ library(grid)
 ```{r, echo=FALSE}
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
-PassingStats <- read.csv("passstats.csv")
+PassStatistics <- read.csv("PassStats.csv")
 togo <- c("short", "medium", "long")
 
 direction1 <- c("left", "right")
@@ -66,11 +66,10 @@ ui <- fluidPage(
     tabsetPanel(
       tabPanel("Play Stats", plotOutput("Plot")
       ),
-      tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table")
+      tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table"))
     )
   )
   
-)
 )
 
 
@@ -102,9 +101,10 @@ server <- function(input, output) {
                        labels=c("Line of Scrimmage", "Complete Pass", "Incomplete Pass", "Touchdown"))
     
   )
-  output$Table <- DT::renderDataTable({
-    DT::datatable(PassingStats)
-  })
+
+    output$Table <- DT:: renderDataTable({
+      DT::datatable(PassStatistics)
+    })
 }
   
   
