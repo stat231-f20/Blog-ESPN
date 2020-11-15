@@ -85,12 +85,9 @@ PassStats <- plays %>%
   group_by(Team, Result) %>%
   summarise(n=n(), TotalYards = sum(yardsGained)) %>%
   rename(ResultCount = n) %>%
-  filter(Result != "NA" & Result != "R" & Result != "S") 
-
-
-CompletionPercentage <- PassStats %>%
-  group_by(Team) %>%
-  summarise(Percentage = (ResultCount / sum(ResultCount)) * 100)
+  filter(Result != "NA" & Result != "R" & Result != "S") %>%
+  mutate(Percentage = (ResultCount / sum(ResultCount)) * 100)
+ 
   
   
 
