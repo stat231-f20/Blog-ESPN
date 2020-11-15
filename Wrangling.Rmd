@@ -91,8 +91,8 @@ PassStats <- plays %>%
 CompletionPercentage <- PassStats %>%
   group_by(Team) %>%
   summarise(Percentage = (ResultCount / sum(ResultCount) )* 100, AverageYards = TotalYards / sum(ResultCount)) %>%
-  mutate(AverageYards = round(AverageYards, 2)) %>%
-  mutate(Percentage = round(Percentage, 2)) %>%
+  mutate(`Average Yards/Completion` = round(AverageYards, 2)) %>%
+  mutate(`Completion %` = round(Percentage, 2)) %>%
   slice(1) %>%
   ungroup() 
 
@@ -206,8 +206,8 @@ NFL1 <- cbind(NFL18, Team=NFLteams)%>%
   select(-`NFL Team`)
 
 Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team") %>%
-  select(Team, W, L, `T`, AverageYards, Percentage)%>%
-  arrange(Team)
+  select(Team, W, L, `T`, `Average Yards/Completion`, `Completion %`) %>%
+  arrange(L)
 
 
 write_csv(Teamstats, "Teamstats.csv")
