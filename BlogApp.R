@@ -29,12 +29,13 @@ ui <- fluidPage(
   mainPanel(
     tabsetPanel(
       tabPanel("Play Stats", plotOutput("Plot")
-      )
+      ),
+      tabPanel("Passing Statistics (2018 NFL SEASON)", DT::dataTableOutput("Table")
     )
   )
   
 )
-
+)
 
 
 
@@ -61,6 +62,10 @@ server <- function(input, output) {
       ylim(-5,60)
     
   )
+
+    output$Table <- DT::renderDataTable({
+      DT::datatable(percentages)
+    })
 }
   
   
