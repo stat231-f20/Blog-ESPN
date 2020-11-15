@@ -6,7 +6,7 @@ library(grid)
 
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
-
+PassingStats <- read.csv("passstats.csv")
 togo <- c("short", "medium", "long")
 
 direction1 <- c("left", "right")
@@ -30,7 +30,7 @@ ui <- fluidPage(
     tabsetPanel(
       tabPanel("Play Stats", plotOutput("Plot")
       ),
-      tabPanel("Passing Statistics (2018 NFL SEASON)", DT::dataTableOutput("Table")
+      tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table")
     )
   )
   
@@ -64,7 +64,7 @@ server <- function(input, output) {
   )
 
     output$Table <- DT::renderDataTable({
-      DT::datatable(percentages)
+      DT::datatable(PassingStats)
     })
 }
   
