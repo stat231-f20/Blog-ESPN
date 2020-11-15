@@ -49,20 +49,20 @@ library(tidyverse)
 #week1 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week1.csv")
 #week2 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week2.csv")
 #week3 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week3.csv")
-#week4 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week4.csv")
-#week5 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week4.csv")
-#week6 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week6.csv")
-#week7 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week7.csv")
-#week8 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week8.csv")
-#week9 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week9.csv")
-#week10 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week10.csv")
-#week11 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week11.csv")
-#week12 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week12.csv")
-#week13 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week13.csv")
-#week14 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week14.csv")
-#week15 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week15.csv")
-#week16 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week16.csv")
-#week17 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week17.csv")
+week4 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week4.csv")
+week5 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week4.csv")
+week6 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week6.csv")
+week7 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week7.csv")
+week8 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week8.csv")
+week9 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week9.csv")
+week10 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week10.csv")
+week11 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week11.csv")
+week12 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week12.csv")
+week13 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week13.csv")
+week14 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week14.csv")
+week15 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week15.csv")
+week16 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week16.csv")
+week17 <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/week17.csv")
 
 
 
@@ -86,9 +86,10 @@ PassStats <- plays %>%
   summarise(n=n(), TotalYards = sum(yardsGained)) %>%
   rename(ResultCount = n) %>%
   filter(Result != "NA" & Result != "R" & Result != "S") %>%
-  mutate(Percentage = (ResultCount / sum(ResultCount)) * 100)
  
-
+CompletionPercentage <- PassStats %>%
+  group_by(Team) %>%
+  summarise(Percentage = (ResultCount / sum(ResultCount) )* 100)
   
 
 #filter the events needed
@@ -144,6 +145,6 @@ plot1finished <- plot1final %>%
 
 write_csv(plot1finished, "plot1finished.csv")
 write_csv(PassStats, "PassStats.csv")
-
+write_csv(CompletionPercentage, "CompletionPercentage.csv")
 ```
 

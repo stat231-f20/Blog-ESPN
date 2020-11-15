@@ -7,10 +7,8 @@ library(grid)
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
 
-Percentages <- read.csv("percentages.csv")
-
-PassingStats <- read.csv("passstats.csv")
-
+PassingStats <- read.csv("PassStats.csv")
+CompletionPercentage <- read.csv("CompletionPercentage.csv")
 togo <- c("short", "medium", "long")
 
 direction1 <- c("left", "right")
@@ -35,7 +33,8 @@ ui <- fluidPage(
       tabPanel("Play Stats", plotOutput("Plot")
       ),
       tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table")
-    )
+    ),
+      tabPanel("Completion Percentage", DT::dataTableOutput("Table2"))
   )
   
 )
@@ -68,10 +67,11 @@ server <- function(input, output) {
   )
 
     output$Table <- DT::renderDataTable({
-
-      DT::datatable(Percentages)
-
       DT::datatable(PassingStats)
+    })
+    
+    output$Table2 <- DT::renderDataTable({
+      DT::datatable(CompletionPercentage)
     })
 }
   
