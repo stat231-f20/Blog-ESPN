@@ -197,11 +197,16 @@ NFL18 <- html_table(tables_NFL18[[1]])
 NFL18 <- NFL18 %>%
   select(`NFL Team`, W, L, `T`)
 
-NFLteams <- c("ARI", "NYJ", "OAK", "SF", "JAX", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI", "PIT",
-              "TEN", "BAL", "DAL", "IND", "SEA", "HOU", "NE", "CHI", "KC", "LAC", "LAR", "NO")
+NFLteams <- c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI",
+              "PIT", "TEN", "BAL", "DAL", "IND", "SEA", "HOU", "NE", "CHI", "KC", "LAC", "LA", "NO")
 
 NFL <- as.data.frame(NFLteams)
 
-NFL1 <- cbind(NFL18, )
+NFL1 <- cbind(NFL18, Team=NFLteams)
+
+Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team")
+
+
+write_csv(Teamstats, "Teamstats.csv")
 
 ```
