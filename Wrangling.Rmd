@@ -79,12 +79,12 @@ week1edit <- weeks %>%
   right_join(plays, week1edit, by = c("playId", "gameId")) %>%
   filter(event != "NA")
 
-percentages <- plays %>%
+passstats <- plays %>%
   select(possessionTeam, yardsToGo, passResult, offensePlayResult) %>%
   rename(Team = possessionTeam, Result = passResult, yardsGained = offensePlayResult) %>%
   group_by(Team, Result) %>%
   summarise(n=n(), TotalYards = sum(yardsGained)) %>%
-  rename(TotalPlay_Result = n) %>%
+  rename(ResultCount = n) %>%
   filter(Result != "NA" & Result != "R" & Result != "S") 
 
   
@@ -142,7 +142,7 @@ plot1finished <- plot1final %>%
   select(gameId, playId, event, down, yardsToGo, playDirection, absoluteYardlineNumber, playResult, togo, x, y, firstdown)
 
 write_csv(plot1finished, "plot1finished.csv")
-write_csv(percentages, "percentages.csv")
+write_csv(passstats, "passstats.csv")
 
 ```
 
