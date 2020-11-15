@@ -6,7 +6,7 @@ library(grid)
 
 plot1 <- read.csv("plot1finished.csv")
 footballfield <- png::readPNG("footballfield.png")
-
+Percentages <- read.csv("percentages.csv")
 togo <- c("short", "medium", "long")
 
 direction1 <- c("left", "right")
@@ -64,7 +64,7 @@ server <- function(input, output) {
   )
 
     output$Table <- DT::renderDataTable({
-      DT::datatable(percentages)
+      DT::datatable(Percentages)
     })
 }
   
