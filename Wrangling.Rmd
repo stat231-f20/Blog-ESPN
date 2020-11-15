@@ -88,7 +88,7 @@ PassStats <- plays %>%
   filter(Result != "NA" & Result != "R" & Result != "S") %>%
   mutate(Percentage = (ResultCount / sum(ResultCount)) * 100)
  
-  
+
   
 
 #filter the events needed
