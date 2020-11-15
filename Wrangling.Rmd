@@ -197,6 +197,11 @@ NFL18 <- html_table(tables_NFL18[[1]])
 NFL18 <- NFL18 %>%
   select(`NFL Team`, W, L, `T`)
 
+NFLteams <- c("ARI", "NYJ", "OAK", "SF", "JAX", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI", "PIT",
+              "TEN", "BAL", "DAL", "IND", "SEA", "HOU", "NE", "CHI", "KC", "LAC", "LAR", "NO")
 
+NFL <- as.data.frame(NFLteams)
+
+NFL1 <- cbind(NFL18, )
 
 ```
