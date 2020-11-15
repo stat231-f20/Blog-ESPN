@@ -92,13 +92,11 @@ server <- function(input, output) {
                                    width = unit(1,"npc"), 
                                    height = unit(1,"npc")), 
                         -Inf, Inf, -Inf, Inf) + 
-      geom_point(size = 3)+
+      geom_point(size = 5)+
       xlim(0,120)+
       ylim(-5,60)+
-      scale_fill_manual(values=c("yellow", "orange", "red", "blue"), 
-                       name="Event",
-                       breaks=c("ball_snapped", "end_of_play", "pass_outcome_incomplete", "touchdown"),
-                       labels=c("Line of Scrimmage", "Complete Pass", "Incomplete Pass", "Touchdown"))
+     scale_color_manual(values=c('orange','yellow', 'red', 'blue'))+
+      scale_shape_manual(values=c(15, 16, 17, 18))
     
   )
 
