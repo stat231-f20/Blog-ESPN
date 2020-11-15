@@ -51,12 +51,12 @@ server <- function(input, output) {
   
   output$Plot <- renderPlot(
     
-    ggplot(data = use_data(), aes_string(x = "x", y = "y", color = "event"))+
+    ggplot(data = use_data(), aes_string(x = "x", y = "y", shape = "event", color = "event"))+
       annotation_custom(rasterGrob(footballfield, 
                                    width = unit(1,"npc"), 
                                    height = unit(1,"npc")), 
                         -Inf, Inf, -Inf, Inf) + 
-      geom_point()+
+      geom_point(size = 3)+
       xlim(0,120)+
       ylim(-5,60)
     
