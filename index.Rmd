@@ -28,7 +28,7 @@ Passing plays have become more common as teams can gain more yards compared to r
 
 ## The App
 
-To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. The app also includes a data table of the passing stats for each team in the NFL. The data table shows the count of completed passes (C), incomplete passes (I), and interceptions (IN), and the total yards gained throughout the season for completed passes. Check it out! 
+To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. The app also includes a data table of the passing stats for each team in the NFL. The data table shows the count of completed passes (C), incomplete passes (I), and interceptions (IN), and the total yards gained throughout the season. Check it out! 
 
 ```{r, echo=FALSE, include=FALSE}
 library(shiny)
