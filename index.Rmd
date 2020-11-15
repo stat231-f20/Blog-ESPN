@@ -89,7 +89,11 @@ server <- function(input, output) {
                         -Inf, Inf, -Inf, Inf) + 
       geom_point(size = 3)+
       xlim(0,120)+
-      ylim(-5,60)
+      ylim(-5,60)+
+      scale_fill_manual(values=c("yellow", "orange", "red", "blue"), 
+                       name="Event",
+                       breaks=c("ball_snapped", "end_of_play", "pass_outcome_incomplete", "touchdown"),
+                       labels=c("Line of Scrimmage", "Complete Pass", "Incomplete Pass", "Touchdown"))
     
   )
 }
