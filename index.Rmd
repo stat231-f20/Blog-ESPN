@@ -26,7 +26,7 @@ We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The
 
 Passing plays have become more common as teams can gain more yards compared to running plays. In 2018, all but one team had a passing play percentage above 50% (teamrankings.com). There were 1371 touchdowns scored and Quarterbacks threw more touchdown passes than ever before. Many people refer to the NFL as a passing league. As quarterbacks and wide receivers become more skilled we will continue to see an increase in the number of passing plays. 
 
-## The App
+## Passing Statistics compared to The New England Patriots
 
 To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. The app also includes a data table of the passing stats for each team in the NFL. The data table shows the count of completed passes (C), incomplete passes (I), and interceptions (IN), and the total yards gained throughout the season. Check it out! 
 
@@ -123,13 +123,15 @@ shinyApp(ui = ui, server = server)
 
 ```
 
+## Our findings
+
+ESPN discovered that after comparing the New England Patriots's total passing yards to other teams, we found that other teams had more passing yards. This gave us reason to claim that there is no correlation between total passing yards and who wins the super bowl. We also found that teams with high completion rates did not necessarily have the most passing yards. We also found that teams were most likely to pass on first down, or when the distance to first down was considered long. The plot of passing play outcomes shows that most passes where thrown towards the sidelines. 
 
 
 
 
 
-
-
+## Field Statistics
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE}
 plot1 <- read.csv("plot1finished.csv")
@@ -217,9 +219,7 @@ shinyApp(ui = ui, server = server)
 
 
 
-## Our findings
 
-ESPN discovered that after comparing the New England Patriots's total passing yards to other teams, we found that other teams had more passing yards. This gave us reason to claim that there is no correlation between total passing yards and who wins the super bowl. We also found that teams with high completion rates did not necessarily have the most passing yards. We also found that teams were most likely to pass on first down, or when the distance to first down was considered long. The plot of passing play outcomes shows that most passes where thrown towards the sidelines. 
 
 
 ## Map of Most Wins per State
