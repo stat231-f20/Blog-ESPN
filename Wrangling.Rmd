@@ -205,7 +205,7 @@ NFL <- as.data.frame(NFLteams)
 NFL1 <- cbind(NFL18, Team=NFLteams)%>%
   select(-`NFL Team`)
 
-Location <- c("CA", "LA", "IL", "MO", " ", "TX", "MA", "PA", "MD", " ", "IN", "WA", "MN", " ", "TN", "OH", "WI", "GA", "NC", "FL", " ", "NY", " ", "CO", "MI", "FL", "NJ", " ", " ", "NV", " ", "AZ" )
+Location <- c("CA", "LA", "IL", "MO", " ", "TX", "MA", "PA", "MD", " ", "IN", "WA", "MN", " ", "TN", "OH", "WI", "GA", "NC", "FL", " ", "NY", " ", "CO", "MI", " ", "NJ", " ", " ", "NV", " ", "AZ" )
 
 
 Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team") %>%
