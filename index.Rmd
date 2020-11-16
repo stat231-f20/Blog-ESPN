@@ -47,6 +47,7 @@ plot1 <- read.csv("plot1finished.csv")
 plot2 <- read.csv("plot2finished.csv") 
 plot3 <- read.csv("Teamstats.csv")
 plot4 <- read.csv("teamstatsmap.csv")
+Teamstats2 <- read.csv("Teamstats2.csv")
 footballfield <- png::readPNG("footballfield.png")
 PassingStats <- read.csv("PassStats.csv")  
 
@@ -161,6 +162,17 @@ shinyApp(ui = ui, server = server)
 
 
 
+
+```
+
+## Our findings
+- compare to patriots
+-no correlation between passing and who wins the superbowl
+-teams with high completion and total passing yards
+
+## Map of Most Wins per State
+
+```{r, echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(plot4, aes(x = long, y = lat, group = group
                       , fill = W)) +
   geom_polygon(color = "white") +
@@ -169,9 +181,12 @@ ggplot(plot4, aes(x = long, y = lat, group = group
   labs(fill = "Wins per Team Location") +
   theme(legend.position="bottom")
 
+Teamstats2
+
 ```
 
-## Our findings
+
+
 
 
 
