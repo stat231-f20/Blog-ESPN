@@ -16,11 +16,11 @@ output:
 
 ## Our Mission
 
-The ESPN PUG group wants to explore the outcomes of passing plays in the NFL 2018 season. Outcomes of plays include touchdown, incomplete pass,  interception, out of bounds, etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data visualize where the ball was started at the beginning of the play and where and what happened at the end of the play. 
+The ESPN PUG group wants to explore the overall passing statistics in the NFL 2018 season, and use this statistics to analyze the outcomes of plays including touchdowns, incomplete passes,  interceptions, passes that were thrown out of bounds, etc. Along with the outcomes of different types of passing plays, we wanted to break down passing statistics per team, and analyze the impact these statistics have on the amount of wins a team had in the NFL 2018 Regular Season; these statistics include total passing yards, completion percentages, average yards per completion, number of completed passes, number of incomplete passes, and the number of interceptions thrown. 
 
 ## The Data
 
-We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops). The data collected includes various datasets: one dataset for plays in a game, and seventeen weeks of tracking data. 
+We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The annual sports analytics contest from NFL Football Operations challenges talented members of the analytics community – from college students to professionals – to contribute to the NFL’s continuing evolution in the use of advanced analytics. As the NFL captures real-time data for every player, on every play, in every situation — anywhere on the field — the Big Data Bowl is the league’s next step in engaging the analytics community (NFL Ops). The data collected includes various datasets: one dataset for plays in a game, and seventeen weeks of tracking data. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data visualize where the ball was started at the beginning of the play and where and what happened at the end of the play. The data also included the result of plays, and the total yards gained per pass. We used this to calculate the average yards per completion per team, total passing yards per team, and the completion percentage per team. Lastly, we scraped data from NFL.com to incorporate wins, losses, and ties per team.    
 
 ## What is so important about passing in the NFL?
 
@@ -28,7 +28,7 @@ Passing plays have become more common as teams can gain more yards compared to r
 
 ## Passing Statistics compared to The New England Patriots
 
-To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. The app also includes a data table of the passing stats for each team in the NFL. The data table shows the count of completed passes (C), incomplete passes (I), and interceptions (IN), and the total yards gained throughout the season. Check it out! 
+In the 2018-2019 NFL season, The New England Patriots went on to win the Super Bowl, which is the highest accolade in pro football. The app below compares the passing statistics of each team to the New England Patriots, which may help us determine if passing statistics in the NFL has a major impact on a team's performance in a season. The app allows the user to compare the number of wins, losses, ties, average yards per completion, completion percentage, and total passing yards, per team, to the Patriots. Take a look!
 
 ```{r, echo=FALSE, include=FALSE}
 library(shiny)
@@ -123,15 +123,14 @@ shinyApp(ui = ui, server = server)
 
 ```
 
-## Our findings
 
-ESPN discovered that after comparing the New England Patriots's total passing yards to other teams, we found that other teams had more passing yards. This gave us reason to claim that there is no correlation between total passing yards and who wins the super bowl. We also found that teams with high completion rates did not necessarily have the most passing yards. We also found that teams were most likely to pass on first down, or when the distance to first down was considered long. The plot of passing play outcomes shows that most passes where thrown towards the sidelines. 
 
 
 
 
 
 ## Field Statistics
+To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. Check it out!
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE}
 plot1 <- read.csv("plot1finished.csv")
@@ -218,11 +217,15 @@ shinyApp(ui = ui, server = server)
 
 
 
+## Our findings
 
+ESPN discovered that after comparing the New England Patriots's total passing yards to other teams, we found that other teams had more passing yards. This gave us reason to claim that there is no correlation between total passing yards and who wins the super bowl. We also found that teams with high completion rates did not necessarily have the most passing yards. We also found that teams were most likely to pass on first down, or when the distance to first down was considered long. The plot of passing play outcomes shows that most passes where thrown towards the sidelines. 
 
 
 
 ## Map of Most Wins per State
+
+The choropleth below shows the highest wins per state. Since some states have multiple teams, we wanted to show the teams that have the highest wins in their respective states. Below the choropleth is a data table that shows the location of each team with the most wins in their respective state, along with their wins, losses, ties, average yards per completion, and their completion percentage (how many passes were completed out of their overall pass attempts). 
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(plot4, aes(x = long, y = lat, group = group
@@ -231,10 +234,12 @@ ggplot(plot4, aes(x = long, y = lat, group = group
   theme_void() +
   coord_fixed(ratio = 1.3) +
   labs(fill = "Wins per Team Location") +
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") + 
+  scale_fill_distiller(palette = "Accent")
 
 Teamstats2 <- Teamstats2 %>%
-  select(-State) 
+  select(-State) %>%
+  rename(`Average Yards/Completion` = AverageYards, `Completion Percentage` = CompletionRate)
 
 print(Teamstats2, row.names = FALSE)
 
