@@ -1,161 +1,33 @@
-NFL Team,W,L,T,Team,Percentage,AverageYards
-"Arizona Cardinals
-            
-          
-                  
-            Cardinals",3,13,0,ARI,55.75,5.74
-"New York Jets
-            
-          
-                  
-            Jets",4,12,0,NYJ,56.52,6.41
-"Oakland Raiders
-            
-          
-                  
-            Raiders",4,12,0,OAK,67.67,7.27
-"San Francisco 49ers
-            
-          
-                  
-            49ers",4,12,0,SF,60.92,7.71
-"Jacksonville Jaguars
-            
-          
-                  
-            Jaguars",5,11,0,JAX,60.85,6.37
-"New York Giants
-            
-          
-                  
-            Giants",5,11,0,NYG,64.15,7.4
-"Tampa Bay Buccaneers
-            
-          
-                  
-            Buccaneers",5,11,0,TB,63.89,8.4
-"Buffalo Bills
-            
-          
-                  
-            Bills",6,10,0,BUF,53.32,6.05
-"Cincinnati Bengals
-            
-          
-                  
-            Bengals",6,10,0,CIN,59.18,6.4
-"Denver Broncos
-            
-          
-                  
-            Broncos",6,10,0,DEN,61.1,6.57
-"Detroit Lions
-            
-          
-                  
-            Lions",6,10,0,DET,63.71,6.58
-"Green Bay Packers
-            
-          
-                  
-            Packers",6,9,1,GB,59.91,7.07
-"Atlanta Falcons
-            
-          
-                  
-            Falcons",7,9,0,ATL,68.16,7.88
-"Carolina Panthers
-            
-          
-                  
-            Panthers",7,9,0,CAR,65.45,7.04
-"Cleveland Browns
-            
-          
-                  
-            Browns",7,8,1,CLE,60.34,7.38
-"Miami Dolphins
-            
-          
-                  
-            Dolphins",7,9,0,MIA,62.79,7.11
-"Washington Redskins
-            
-          
-                  
-            Redskins",7,9,0,WAS,59.73,6.4
-"Minnesota Vikings
-            
-          
-                  
-            Vikings",8,7,1,MIN,69.52,6.98
-"Philadelphia Eagles
-            xy
-                  
-            Eagles
-            xy",9,7,0,PHI,69.04,7.55
-"Pittsburgh Steelers
-            
-          
-                  
-            Steelers",9,6,1,PIT,64.94,7.33
-"Tennessee Titans
-            
-          
-                  
-            Titans",9,7,0,TEN,65.32,7.28
-"Baltimore Ravens
-            xz
-                  
-            Ravens
-            xz",10,6,0,BAL,58.89,6.52
-"Dallas Cowboys
-            xz
-                  
-            Cowboys
-            xz",10,6,0,DAL,65.45,7.14
-"Indianapolis Colts
-            xy
-                  
-            Colts
-            xy",10,6,0,IND,65.46,6.98
-"Seattle Seahawks
-            xy
-                  
-            Seahawks
-            xy",10,6,0,SEA,63.29,7.61
-"Houston Texans
-            xz
-                  
-            Texans
-            xz",11,5,0,HOU,66.22,8.06
-"New England Patriots
-            xz
-                  
-            Patriots
-            xz",11,5,0,NE,63.97,7.52
-"Chicago Bears
-            xz
-                  
-            Bears
-            xz",12,4,0,CHI,64.65,7.22
-"Kansas City Chiefs
-            x*
-                  
-            Chiefs
-            x*",12,4,0,KC,65.38,8.63
-"Los Angeles Chargers
-            xy
-                  
-            Chargers
-            xy",12,4,0,LAC,66.81,8.31
-"Los Angeles Rams
-            xz
-                  
-            Rams
-            xz",13,3,0,LA,63.48,8.13
-"New Orleans Saints
-            x*
-                  
-            Saints
-            x*",13,3,0,NO,71.35,7.83
+Team,W,L,T,AverageYards,CompletionRate
+LA,13,3,0,8.13,63.48
+NO,13,3,0,7.83,71.35
+CHI,12,4,0,7.22,64.65
+KC,12,4,0,8.63,65.38
+LAC,12,4,0,8.31,66.81
+HOU,11,5,0,8.06,66.22
+NE,11,5,0,7.52,63.97
+PIT,9,6,1,7.33,64.94
+BAL,10,6,0,6.52,58.89
+DAL,10,6,0,7.14,65.45
+IND,10,6,0,6.98,65.46
+SEA,10,6,0,7.61,63.29
+MIN,8,7,1,6.98,69.52
+PHI,9,7,0,7.55,69.04
+TEN,9,7,0,7.28,65.32
+CLE,7,8,1,7.38,60.34
+GB,6,9,1,7.07,59.91
+ATL,7,9,0,7.88,68.16
+CAR,7,9,0,7.04,65.45
+MIA,7,9,0,7.11,62.79
+WAS,7,9,0,6.4,59.73
+BUF,6,10,0,6.05,53.32
+CIN,6,10,0,6.4,59.18
+DEN,6,10,0,6.57,61.1
+DET,6,10,0,6.58,63.71
+JAX,5,11,0,6.37,60.85
+NYG,5,11,0,7.4,64.15
+TB,5,11,0,8.4,63.89
+NYJ,4,12,0,6.41,56.52
+OAK,4,12,0,7.27,67.67
+SF,4,12,0,7.71,60.92
+ARI,3,13,0,5.74,55.75

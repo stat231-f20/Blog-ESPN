@@ -90,9 +90,9 @@ PassStats <- plays %>%
  
 CompletionPercentage <- PassStats %>%
   group_by(Team) %>%
-  summarise(Percentage = (ResultCount / sum(ResultCount) )* 100, AverageYards = TotalYards / sum(ResultCount)) %>%
+  summarise(CompletionRate = (ResultCount / sum(ResultCount) )* 100, AverageYards = TotalYards / sum(ResultCount)) %>%
   mutate(AverageYards = round(AverageYards, 2)) %>%
-  mutate(Percentage = round(Percentage, 2)) %>%
+  mutate(CompletionRate= round(CompletionRate, 2)) %>%
   slice(1) %>%
   ungroup() 
 
@@ -202,11 +202,21 @@ NFLteams <- c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN"
 
 NFL <- as.data.frame(NFLteams)
 
-NFL1 <- cbind(NFL18, Team=NFLteams)
+NFL1 <- cbind(NFL18, Team=NFLteams)%>%
+  select(-`NFL Team`)
 
-Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team")
+Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team") %>%
+  select(Team, W, L, `T`, AverageYards, CompletionRate) %>%
+  arrange(L) %>%
+  cbind(Location)
+
+Location <- c("California", "Louisiana", "Illinois", "Missouri", "California", "Texas", "Massachusetts", "Pennsylvania", "Maryland", "Texas", "Indiana", "Washington", "Minnesota", "Pennsylvania", "Tennessee", "Ohio", "Wisconsin", "Georgia", "North Carolina", "Florida", "Maryland", "New York", "Ohio", "Colorado", "Michigan", "Florida", "New Jersey", "Florida", "New Jersey", "Nevada", "California", "Arizona" )
+
 
 
 write_csv(Teamstats, "Teamstats.csv")
+
+
+
 
 ```

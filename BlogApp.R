@@ -6,14 +6,18 @@ library(grid)
 
 plot1 <- read.csv("plot1finished.csv")
 plot2 <- read.csv("plot2finished.csv")
+plot3 <- read.csv("Teamstats.csv")
 footballfield <- png::readPNG("footballfield.png")
-
 PassingStats <- read.csv("PassStats.csv")
-CompletionPercentage <- read.csv("CompletionPercentage.csv")
+
+
+
+
 togo <- c("short", "medium", "long")
-
 direction1 <- c("left", "right")
-
+Team <-  c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI",
+           "PIT", "TEN", "BAL", "DAL", "IND", "SEA", "HOU", "NE", "CHI", "KC", "LAC", "LA", "NO")
+SeasonStats <- c("W", "L", "T", "AverageYards", "CompletionRate")
 ui <- fluidPage(
   
   titlePanel("NFL Passing"),
@@ -30,17 +34,23 @@ ui <- fluidPage(
     
   ),
   mainPanel(
+    selectInput(inputId = "Team", label = "NFL Teams:", choices = Team), 
+    selectInput(inputId = "SeasonStats", label = "Choose a Season Statistic:", choices = SeasonStats),
     tabsetPanel(
       tabPanel("Plot of Passing Play Outcomes", plotOutput("Plot")
       ),
       tabPanel("Table of Passing Play Outcomes",  DT::dataTableOutput("Table_plot")
       ),
-      tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table")
-    ),
-      tabPanel("Completion Percentage", DT::dataTableOutput("Table2"))
+      tabPanel("Averages vs. New England Patriots", plotOutput("Plot2")
+      ),
+      tabPanel("Season Statistics By Team", DT::dataTableOutput("Table")
+      ),
+      tabPanel("Total Yardage vs. New England Patriots", plotOutput("Plot3")
+               ),
+      tabPanel("Passsing Statistics By Team", DT::dataTableOutput("Table2"))
+    )
   )
   
-)
 )
 
 
@@ -62,9 +72,16 @@ server <- function(input, output) {
       filter(absoluteYardlineNumber == input$yardline)%>%
       filter(playDirection == input$direction)
   })
+  use_data3 <- reactive({
+    data <- plot3 %>%
+      filter(Team == input$Team | Team == "NE")
+  })
+  use_data4 <- reactive({
+    data <- PassingStats %>%
+      filter(Team == input$Team | Team == "NE")
+  })
   
   output$Plot <- renderPlot(
-    
     ggplot(data = use_data(), aes_string(x = "x", y = "y", shape = "event", color = "event"))+
       annotation_custom(rasterGrob(footballfield, 
                                    width = unit(1,"npc"), 
@@ -77,20 +94,25 @@ server <- function(input, output) {
       scale_shape_manual(values=c(15, 16, 17, 18))
     
   )
-  
-  output$Table_plot <- DT::renderDataTable({
-    DT::datatable(use_data2())
-  })
-
-    output$Table <- DT::renderDataTable({
-      DT::datatable(PassingStats)
-    })
-    
-    output$Table2 <- DT::renderDataTable({
-      DT::datatable(CompletionPercentage)
-    })
+  output$Plot2 <- renderPlot(
+    ggplot(data = use_data3(), aes_string(x = "Team", y = input$SeasonStats, fill = "Team")) + 
+             geom_bar(position = "dodge", stat = "identity")
+  )
+  output$Plot3 <- renderPlot(
+    ggplot(data = use_data4(), aes_string(x = "Team", y = "TotalYards", fill = "Team")) + 
+      geom_bar(position = "dodge", stat = "identity"),
+  )
+  output$Table2 <- DT::renderDataTable(
+    DT::datatable(PassStats)
+  )
+  output$Table <- DT::renderDataTable(
+    DT::datatable(Teamstats)
+  )
+  output$Table_plot <- DT::renderDataTable(
+    DT::datatable(plot2finished)
+  )
 }
-  
+
   
 
 
