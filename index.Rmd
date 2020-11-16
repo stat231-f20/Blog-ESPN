@@ -190,7 +190,8 @@ server <- function(input, output) {
       xlim(0,120)+
       ylim(-5,60)+
       scale_color_manual(values=c('orange','yellow', 'red', 'blue'))+
-      scale_shape_manual(values=c(15, 16, 17, 18))
+      scale_shape_manual(values=c(15, 16, 17, 18))+
+      labs(x = " ", y = " ")
     
   )
   
