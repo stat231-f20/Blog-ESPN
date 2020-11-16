@@ -207,15 +207,27 @@ NFL1 <- cbind(NFL18, Team=NFLteams)%>%
 
 Location <- c("CA", "LA", "IL", "MO", " ", "TX", "MA", "PA", "MD", " ", "IN", "WA", "MN", " ", "TN", "OH", "WI", "GA", "NC", "FL", " ", "NY", " ", "CO", "MI", " ", "NJ", " ", " ", "NV", " ", "AZ" )
 
+state_info <- data.frame(State = state.name)
 
-Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team") %>%
-  select(Team, W, L, `T`, AverageYards, CompletionRate) %>%
-  arrange(L) 
+
 
 Teamstats2 <- Teamstats %>%
   cbind(Location)%>%
+  data.frame(State = tolower(Location)) %>%
   arrange(L) %>%
   filter(Location != " ")
+  
+teamstatsmap <- Teamstats2 %>%
+  right_join(usa_states, by = c("State" = "region"))
+
+ggplot(teamstatsmap, aes(x = long, y = lat, group = group
+                      , fill = W)) +
+  geom_polygon(color = "white") +
+  theme_void() +
+  coord_fixed(ratio = 1.3) +
+  labs(fill = "Wins per Team Location") +
+  theme(legend.position="bottom")
+
 
 write_csv(Teamstats, "Teamstats.csv")
 write_csv(Teamstats2, "Teamstats2.csv")
