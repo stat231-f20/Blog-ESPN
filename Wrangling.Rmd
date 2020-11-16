@@ -209,7 +209,9 @@ Location <- c("CA", "LA", "IL", "MO", " ", "TX", "MA", "PA", "MD", " ", "IN", "W
 
 state_info <- data.frame(State = state.name)
 
-
+usa_states <- map_data(map = "state"
+                       , region = ".") 
+head(usa_states)
 
 Teamstats2 <- Teamstats %>%
   cbind(Location)%>%
