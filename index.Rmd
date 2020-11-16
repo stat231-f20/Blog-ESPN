@@ -1,6 +1,6 @@
 ---
 title: "NFL Passing Statistics in 2018"
-author: "Damien Ruparal Nathan Tatko Sean Dube"
+author: "Damien Ruparel, Nathan Tatko, Sean Dube"
 date: "11/17/2020"
 output:
   rmdformats::readthedown:
