@@ -48,8 +48,6 @@ footballfield <- png::readPNG("footballfield.png")
 PassingStats <- read.csv("PassStats.csv") 
 
 
-
-
 togo <- c("short", "medium", "long")
 direction1 <- c("left", "right")
 Team <-  c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI",
@@ -159,7 +157,7 @@ server <- function(input, output) {
   )
   output$Table_plot <- DT::renderDataTable(
     DT::datatable(plot2finished)
-  )  
+  )   
 }
 
   
