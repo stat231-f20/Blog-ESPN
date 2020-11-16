@@ -40,7 +40,7 @@ library(grid)
 
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE}
-plays <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/plays.csv")
+
 plot1 <- read.csv("plot1finished.csv")
 plot2 <- read.csv("plot2finished.csv")
 plot3 <- read.csv("Teamstats.csv")
@@ -91,19 +91,7 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-  
-  PassStats <- reactive({ 
-    PassStats <- plays %>%
-    select(possessionTeam, yardsToGo, passResult, offensePlayResult) %>%
-    rename(Team = possessionTeam, Result = passResult, yardsGained = offensePlayResult) %>%
-    group_by(Team, Result) %>%
-    summarise(n=n(), TotalYards = sum(yardsGained)) %>%
-    rename(ResultCount = n) %>%
-    filter(Result != "NA" & Result != "R" & Result != "S")
-  })
-  
-  
-  
+
   use_data <- reactive({
     data <- plot1 %>%
       filter(down == input$down1)%>%
