@@ -146,7 +146,7 @@ server <- function(input, output) {
     DT::datatable(plot3)
   )
   output$Table_plot <- DT::renderDataTable(
-    DT::datatable(plot2)
+    DT::datatable(use_data2())
   )   
 }
 
