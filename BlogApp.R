@@ -15,10 +15,8 @@ PassingStats <- read.csv("PassStats.csv")
 
 togo <- c("short", "medium", "long")
 direction1 <- c("left", "right")
-Team <-  c( "ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", 
-            "DAL", "DEN", "DET", "FREE", "GB", "HOU", "IND", "JAX", "KC", "LA", "MIA", "MIN",
-            "NE", "NO", "NYG", "NYJ", "OAK", "PHI", "PIT", "SD", "SEA", "SF",
-            "STL", "TB", "TEN", "WAS")
+Team <-  c("ARI", "NYJ", "OAK", "SF", "JAX", "NYG", "TB", "BUF", "CIN", "DEN", "DET", "GB", "ATL", "CAR", "CLE", "MIA", "WAS", "MIN", "PHI",
+           "PIT", "TEN", "BAL", "DAL", "IND", "SEA", "HOU", "NE", "CHI", "KC", "LAC", "LA", "NO")
 SeasonStats <- c("W", "L", "T", "AverageYards", "CompletionRate")
 ui <- fluidPage(
   
@@ -41,13 +39,15 @@ ui <- fluidPage(
     tabsetPanel(
       tabPanel("Plot of Passing Play Outcomes", plotOutput("Plot")
       ),
+      tabPanel("Table of Passing Play Outcomes",  DT::dataTableOutput("Table_plot")
+      ),
       tabPanel("Averages vs. New England Patriots", plotOutput("Plot2")
       ),
       tabPanel("Season Statistics By Team", DT::dataTableOutput("Table")
       ),
-      tabPanel("Table of Passing Play Outcomes",  DT::dataTableOutput("Table_plot")
-      )
-    
+      tabPanel("Total Yardage vs. New England Patriots", plotOutput("Plot3")
+               ),
+      tabPanel("Passsing Statistics By Team", DT::dataTableOutput("Table2"))
     )
   )
   
@@ -78,7 +78,7 @@ server <- function(input, output) {
   })
   use_data4 <- reactive({
     data <- PassingStats %>%
-      filter(Team = input$Team | Team == "NE")
+      filter(Team == input$Team | Team == "NE")
   })
   
   output$Plot <- renderPlot(
@@ -99,8 +99,11 @@ server <- function(input, output) {
              geom_bar(position = "dodge", stat = "identity")
   )
   output$Plot3 <- renderPlot(
-    ggplot(data = use_data3(), aes_string(x = "Team", y = "TotalYards", fill = "Team")) + 
-      geom_bar(position = "dodge", stat = "identity")
+    ggplot(data = use_data4(), aes_string(x = "Team", y = "TotalYards", fill = "Team")) + 
+      geom_bar(position = "dodge", stat = "identity"),
+  )
+  output$Table2 <- DT::renderDataTable(
+    DT::datatable(PassStats)
   )
   output$Table <- DT::renderDataTable(
     DT::datatable(Teamstats)
