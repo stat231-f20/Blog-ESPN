@@ -16,7 +16,7 @@ output:
 
 ## Our Mission
 
-The ESPN PUG group wants to explore the overall passing statistics in the NFL 2018 season, and use this statistics to analyze the outcomes of plays including touchdowns, incomplete passes,  interceptions, passes that were thrown out of bounds, etc. Along with the outcomes of different types of passing plays, we wanted to break down passing statistics per team, and analyze the impact these statistics have on the amount of wins a team had in the NFL 2018 Regular Season; these statistics include total passing yards, completion percentages, average yards per completion, number of completed passes, number of incomplete passes, and the number of interceptions thrown. 
+The ESPN PUG group wants to explore the overall passing statistics in the NFL 2018 season, and use these statistics to analyze the outcomes of plays including touchdowns, incomplete passes, interceptions, passes that were thrown out of bounds, etc. Along with the outcomes of different types of passing plays, we wanted to break down passing statistics per team, and analyze the impact these statistics have on the amount of wins a team had in the NFL 2018 Regular Season; these statistics include total passing yards, completion percentages, average yards per completion, number of completed passes, number of incomplete passes, and the number of interceptions thrown. 
 
 
 ## The Data
@@ -239,7 +239,7 @@ ggplot(plot4, aes(x = long, y = lat, group = group
   theme(legend.position="bottom") + 
   scale_fill_distiller(palette = "YlOrRd")
 
-Teamstats2 <- Teamstats2 %>%
+Teamstats2 <- Teamstats2 %>% 
   select(-State) %>%
   rename(`Average Yards/Completion` = AverageYards, `Completion Percentage` = CompletionRate)
 
