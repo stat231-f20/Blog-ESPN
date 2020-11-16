@@ -93,7 +93,6 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-
   use_data <- reactive({
     data <- plot1 %>%
       filter(down == input$down1)%>%
