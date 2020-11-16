@@ -1,5 +1,5 @@
 ---
-title: "NFL Passing"
+title: "NFL Passing Statistics in 2018"
 author: "Damien Ruparal Nathan Tatko Sean Dube"
 date: "11/17/2020"
 output:
@@ -10,7 +10,7 @@ output:
 ---
 <center>
 
-![ESPN - Damien Ruparel, Nathan Tatko, Sean Dube](https://raw.githubusercontent.com/stat231-f20/Blog-ESPN/main/images/team_image.jpeg)
+![ESPN - Damien Ruparel, Nathan Tatko, Sean Dube](https://neiuindependent.org/wp-content/uploads/2019/11/nfl-national-football-league-royalty-free-thumbnail.jpg) 
 
 </center>
 
