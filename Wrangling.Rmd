@@ -207,9 +207,16 @@ NFL1 <- cbind(NFL18, Team=NFLteams)%>%
 
 Teamstats <- right_join(NFL1,CompletionPercentage , by = "Team") %>%
   select(Team, W, L, `T`, AverageYards, CompletionRate) %>%
-  arrange(L)
+  arrange(L) %>%
+  cbind(Location)
+
+Location <- c("California", "Louisiana", "Illinois", "Missouri", "California", "Texas", "Massachusetts", "Pennsylvania", "Maryland", "Texas", "Indiana", "Washington", "Minnesota", "Pennsylvania", "Tennessee", "Ohio", "Wisconsin", "Georgia", "North Carolina", "Florida", "Maryland", "New York", "Ohio", "Colorado", "Michigan", "Florida", "New Jersey", "Florida", "New Jersey", "Nevada", "California", "Arizona" )
+
 
 
 write_csv(Teamstats, "Teamstats.csv")
+
+
+
 
 ```
