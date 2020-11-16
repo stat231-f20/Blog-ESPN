@@ -82,7 +82,7 @@ ui <- fluidPage(
       ),
       tabPanel("Season Statistics By Team", DT::dataTableOutput("Table")
       ),
-      tabPanel("Total Yardage vs. New England Patriots", plotOutput("Plot3")
+      tabPanel("Total Passing Yards vs. New England Patriots", plotOutput("Plot3")
                ),
       tabPanel("Passsing Statistics By Team", DT::dataTableOutput("Table2"))
     )
@@ -161,6 +161,8 @@ shinyApp(ui = ui, server = server)
 ```
 
 ## Our findings
+
+
 
 ## Limitations
 
