@@ -43,6 +43,7 @@ library(grid)
 
 #plays <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/plays.csv")
 
+
 plot1 <- read.csv("plot1finished.csv")
 plot2 <- read.csv("plot2finished.csv")
 plot3 <- read.csv("Teamstats.csv")
