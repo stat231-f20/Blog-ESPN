@@ -261,7 +261,7 @@ Although each NFL team in a season plays 16 games, we must take into account tha
 ![Tom Brady (QB for the Patriots in 2018)](https://patriotswire.usatoday.com/wp-content/uploads/sites/71/2018/09/gettyimages-1029882282.jpg?w=1000&h=600&crop=1)
 
 ![Michael Thomas (WR for the Saints)](https://img.bleacherreport.net/img/article/media_slots/photos/002/837/692/6c1b8a0cc01d139ab6b5c781fbbc294c_crop_exact.jpg?w=2975&h=2048&q=85)
-
+ 
 
 
 
