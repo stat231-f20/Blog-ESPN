@@ -105,7 +105,7 @@ down,togo,absoluteYardlineNumber,playDirection,TouchdownPercentage,CompletionPer
 1,long,65,left,0,0.6,5.96
 1,long,65,right,0,0.74,8.77
 1,long,66,left,0,0.71,7.27
-1,long,66,right,0.03,0.65,7.6
+1,long,66,right,0.02,0.65,7.6
 1,long,67,left,0,0.6,5.5
 1,long,67,right,0,0.58,7.78
 1,long,68,left,0,0.6,5.36
@@ -315,7 +315,7 @@ down,togo,absoluteYardlineNumber,playDirection,TouchdownPercentage,CompletionPer
 2,long,47,left,0,0.76,7.65
 2,long,47,right,0,0.73,6.13
 2,long,48,left,0.5,0.81,22.44
-2,long,48,right,0,0.6,5.32
+2,long,48,right,0,0.6,5.33
 2,long,49,left,0,0.64,9.55
 2,long,49,right,0,0.79,5.67
 2,long,50,left,0,0.82,8.58
@@ -378,7 +378,7 @@ down,togo,absoluteYardlineNumber,playDirection,TouchdownPercentage,CompletionPer
 2,long,78,right,0,0.77,5.92
 2,long,79,left,0,0.67,5.67
 2,long,79,right,0.05,0.95,8.74
-2,long,80,left,0.03,0.75,11.38
+2,long,80,left,0.02,0.75,11.38
 2,long,80,right,0.03,0.55,5.9
 2,long,81,left,0,0.77,12.73
 2,long,81,right,0.14,0.57,9.21
