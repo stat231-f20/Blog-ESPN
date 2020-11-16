@@ -39,14 +39,24 @@ library(grid)
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message = FALSE, warning=FALSE}
+plays <- read_csv("/Users/damienruparel/git/BLOG-ESPN/nfl-big-data-bowl-2021/plays.csv")
 plot1 <- read.csv("plot1finished.csv")
+plot2 <- read.csv("plot2finished.csv")
+plot3 <- read.csv("Teamstats.csv")
 footballfield <- png::readPNG("footballfield.png")
-PassStatistics <- read.csv("PassStats.csv")
+PassingStats <- read.csv("PassStats.csv")
+
+
+
+
 togo <- c("short", "medium", "long")
-
 direction1 <- c("left", "right")
-
+Team <-  c( "ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", 
+            "DAL", "DEN", "DET", "FREE", "GB", "HOU", "IND", "JAX", "KC", "LA", "MIA", "MIN",
+            "NE", "NO", "NYG", "NYJ", "OAK", "PHI", "PIT", "SD", "SEA", "SF",
+            "STL", "TB", "TEN", "WAS")
+SeasonStats <- c("W", "L", "T", "AverageYards", "CompletionRate")
 ui <- fluidPage(
   
   titlePanel("NFL Passing"),
@@ -63,10 +73,18 @@ ui <- fluidPage(
     
   ),
   mainPanel(
+    selectInput(inputId = "Team", label = "NFL Teams:", choices = Team), 
+    selectInput(inputId = "SeasonStats", label = "Choose a Season Statistic:", choices = SeasonStats),
     tabsetPanel(
-      tabPanel("Play Stats", plotOutput("Plot")
+      tabPanel("Plot of Passing Play Outcomes", plotOutput("Plot")
       ),
-      tabPanel("Overall Passing Statistics", DT::dataTableOutput("Table"))
+      tabPanel("Averages vs. New England Patriots", plotOutput("Plot2")
+      ),
+      tabPanel("Season Statistics By Team", DT::dataTableOutput("Table")
+      ),
+      tabPanel("Table of Passing Play Outcomes",  DT::dataTableOutput("Table_plot")
+      )
+    
     )
   )
   
@@ -75,6 +93,16 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
+ 
+  PassStats <- reactive({ plays %>%
+  select(possessionTeam, yardsToGo, passResult, offensePlayResult) %>%
+  rename(Team = possessionTeam, Result = passResult, yardsGained = offensePlayResult) %>%
+  group_by(Team, Result) %>%
+  summarise(n=n(), TotalYards = sum(yardsGained)) %>%
+  rename(ResultCount = n) %>%
+  filter(Result != "NA" & Result != "R" & Result != "S")
+  })
+  
   
   use_data <- reactive({
     data <- plot1 %>%
@@ -84,9 +112,23 @@ server <- function(input, output) {
       filter(playDirection == input$direction)
   })
   
+  use_data2 <- reactive({
+    data <- plot2 %>%
+      filter(down == input$down1)%>%
+      filter(togo == input$ToGo) %>%
+      filter(absoluteYardlineNumber == input$yardline)%>%
+      filter(playDirection == input$direction)
+  })
+  use_data3 <- reactive({
+    data <- plot3 %>%
+      filter(Team == input$Team | Team == "NE")
+  })
+  use_data4 <- reactive({
+    data <- PassingStats %>%
+      filter(Team = input$Team | Team == "NE")
+  })
   
   output$Plot <- renderPlot(
-    
     ggplot(data = use_data(), aes_string(x = "x", y = "y", shape = "event", color = "event"))+
       annotation_custom(rasterGrob(footballfield, 
                                    width = unit(1,"npc"), 
@@ -95,14 +137,24 @@ server <- function(input, output) {
       geom_point(size = 5)+
       xlim(0,120)+
       ylim(-5,60)+
-     scale_color_manual(values=c('orange','yellow', 'red', 'blue'))+
+      scale_color_manual(values=c('orange','yellow', 'red', 'blue'))+
       scale_shape_manual(values=c(15, 16, 17, 18))
     
   )
-
-    output$Table <- DT:: renderDataTable({
-      DT::datatable(PassStatistics)
-    })
+  output$Plot2 <- renderPlot(
+    ggplot(data = use_data3(), aes_string(x = "Team", y = input$SeasonStats, fill = "Team")) + 
+             geom_bar(position = "dodge", stat = "identity")
+  )
+  output$Plot3 <- renderPlot(
+    ggplot(data = use_data3(), aes_string(x = "Team", y = "TotalYards", fill = "Team")) + 
+      geom_bar(position = "dodge", stat = "identity")
+  )
+  output$Table <- DT::renderDataTable(
+    DT::datatable(Teamstats)
+  )
+  output$Table_plot <- DT::renderDataTable(
+    DT::datatable(plot2finished)
+  )
 }
   
   
@@ -111,7 +163,7 @@ server <- function(input, output) {
 
 
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server) 
 
 ```
 
