@@ -16,7 +16,7 @@ output:
 
 ## Our Mission
 
-The ESPN PUG group wants to explore the outcomes of passing plays in the NFL 2018 season. Outcomes of plays include touchdown, safety, incomplete pass, fumble, interception, out of bounds, field goal etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data visualize where the ball was started at the beginnning of the play and where and what happened at the end of the play. 
+The ESPN PUG group wants to explore the outcomes of passing plays in the NFL 2018 season. Outcomes of plays include touchdown, incomplete pass,  interception, out of bounds, etc. Our dataset gave information on the ball's location at a specific point in the play, the absolute yard line (line of scrimmage), yards to go, down, and direction of play. We used this data visualize where the ball was started at the beginning of the play and where and what happened at the end of the play. 
 
 ## The Data
 
@@ -82,7 +82,7 @@ ui <- fluidPage(
       ),
       tabPanel("Season Statistics By Team", DT::dataTableOutput("Table")
       ),
-      tabPanel("Total Yardage vs. New England Patriots", plotOutput("Plot3")
+      tabPanel("Total Passing Yards vs. New England Patriots", plotOutput("Plot3")
                ),
       tabPanel("Passsing Statistics By Team", DT::dataTableOutput("Table2"))
     )
@@ -93,7 +93,6 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-
   use_data <- reactive({
     data <- plot1 %>%
       filter(down == input$down1)%>%
@@ -162,6 +161,8 @@ shinyApp(ui = ui, server = server)
 ```
 
 ## Our findings
+
+
 
 ## Limitations
 
