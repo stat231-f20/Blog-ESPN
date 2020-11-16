@@ -26,7 +26,7 @@ We gathered data from the NFL Big Bowl Data competition's dataset in Kaggle. The
 
 Passing plays have become more common as teams can gain more yards compared to running plays. In 2018, all but one team had a passing play percentage above 50% (teamrankings.com). There were 1371 touchdowns scored and Quarterbacks threw more touchdown passes than ever before. Many people refer to the NFL as a passing league. As quarterbacks and wide receivers become more skilled we will continue to see an increase in the number of passing plays. 
 
-## Passing Statistics compared to The New England Patriots
+## NFL Passing Statistics Compared to The New England Patriots
 
 In the 2018-2019 NFL season, The New England Patriots went on to win the Super Bowl, which is the highest accolade in pro football. The app below compares the passing statistics of each team to the New England Patriots, which may help us determine if passing statistics in the NFL has a major impact on a team's performance in a season. The app allows the user to compare the number of wins, losses, ties, average yards per completion, completion percentage, and total passing yards, per team, to the Patriots. Take a look!
 
@@ -242,7 +242,7 @@ Teamstats2 <- Teamstats2 %>%
   select(-State) %>%
   rename(`Average Yards/Completion` = AverageYards, `Completion Percentage` = CompletionRate)
 
-print(Teamstats2, row.names = FALSE)
+print(Teamstats2, row.names = FALSE) 
 
 ```
 
