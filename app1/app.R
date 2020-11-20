@@ -59,7 +59,7 @@ server <- function(input, output) {
   )
   output$Plot3 <- renderPlot(
     ggplot(data = use_data4(), aes_string(x = "Team", y = "TotalYards", fill = "Team")) + 
-      geom_bar(position = "dodge", stat = "identity"),
+      geom_bar(position = "dodge", stat = "identity")
   )
   output$Table2 <- DT::renderDataTable(
     DT::datatable(PassingStats)
@@ -69,12 +69,6 @@ server <- function(input, output) {
   )
   
 }
-
-
-
-
-
-
 
 
 shinyApp(ui = ui, server = server)
