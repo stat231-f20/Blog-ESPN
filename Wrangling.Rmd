@@ -149,7 +149,7 @@ plot1finished <- plot1final %>%
   select(gameId, playId, event, down, yardsToGo, playDirection, absoluteYardlineNumber, playResult, togo, x, y, firstdown)
 
 write_csv(plot1finished, "plot1finished.csv")
-write_csv(PassStats, "PassStats.csv")
+write_csv(PassStats, "passstats.csv")
 write_csv(CompletionPercentage, "CompletionPercentage.csv")
 ```
 
