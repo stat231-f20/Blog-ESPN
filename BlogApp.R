@@ -11,7 +11,7 @@ plot3 <- read.csv("Teamstats.csv")
 plot4 <- read.csv("teamstatsmap.csv")
 Teamstats2 <- read.csv("Teamstats2.csv")
 footballfield <- png::readPNG("footballfield.png")
-PassingStats <- read.csv("PassStats.csv")  
+PassingStats <- read.csv("passstats.csv")  
 
 
 
