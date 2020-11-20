@@ -6,7 +6,6 @@ output:
   rmdformats::readthedown:
     thumbnails: false
     highlight: NULL
-    runtime: shiny
 ---
 <center>
 
@@ -31,12 +30,12 @@ Passing plays have become more common as teams can gain more yards compared to r
 
 In the 2018-2019 NFL season, The New England Patriots went on to win the Super Bowl, which is the highest accolade in pro football. The app below compares the passing statistics of each team to the New England Patriots, which may help us determine if passing statistics in the NFL has a major impact on a team's performance in a season. The app allows the user to compare the number of wins, losses, ties, average yards per completion, completion percentage, and total passing yards, per team, to the Patriots. Take a look!
 
-<iframe height="600" width="100%" frameborder="no" title="Put Your Title Here" src="https://username.shinyapps.io/shinyappname/"> </iframe>
+<iframe height="600" width="100%" frameborder="no" title="Put Your Title Here" src="https://seandube.shinyapps.io/app1/"> </iframe>
 
 ## Field Statistics
 To explore the outcome of passing plays, we created an app where one can input down, yards to go (short, medium, long), absolute yard line, and direction of the play. By changing these inputs, one will be able to see the outcome of every which is displayed on a choropleth of a football field. Events of the game are marked with different symbols. Check it out!
 
-<iframe height="600" width="100%" frameborder="no" title="Put Your Title Here" src="https://username.shinyapps.io/shinyappname/"> </iframe>
+<iframe height="600" width="100%" frameborder="no"src="https://seandube.shinyapps.io/app1/"> </iframe>
 
 
 
@@ -51,6 +50,13 @@ ESPN discovered that after comparing the New England Patriots's total passing ya
 The choropleth below shows the highest wins per state. Since some states have multiple teams, we wanted to show the teams that have the highest wins in their respective states. Below the choropleth is a data table that shows the location of each team with the most wins in their respective state, along with their wins, losses, ties, average yards per completion, and their completion percentage (how many passes were completed out of their overall pass attempts). 
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE}
+library(tidyverse)
+library(png)
+library(grid)
+
+plot3 <- read.csv("Teamstats.csv")
+plot4 <- read.csv("teamstatsmap.csv")
+Teamstats2 <- read.csv("Teamstats2.csv")
 ggplot(plot4, aes(x = long, y = lat, group = group
                       , fill = W)) +
   geom_polygon(color = "white") +
